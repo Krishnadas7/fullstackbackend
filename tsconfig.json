@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "commonjs",
-    "outDir": "./dist",  // Ensure this is pointing to ./dist
-    "rootDir": "./src",  // Ensure this is pointing to ./src
+    "module": "CommonJS", 
+    "outDir": "./dist",        // Ensure it's pointing to the root dist folder
+    "rootDir": "./src",        // Your source TypeScript files should be in src
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts"],  // All .ts files inside src
+  "exclude": ["node_modules"]  // Exclude node_modules folder
 }
