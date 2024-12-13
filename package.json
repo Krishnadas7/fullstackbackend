@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --max-old-space-size=4096 ./node_modules/.bin/ts-node-dev src/index.ts"
+    "dev": "node --max-old-space-size=512 ./node_modules/.bin/ts-node-dev src/index.ts"
   },
   "keywords": [],
   "author": "",
