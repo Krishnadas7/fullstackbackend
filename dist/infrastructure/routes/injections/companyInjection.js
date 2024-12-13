@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.companyAdapter = void 0;
+const companyAdapter_1 = require("../../../controller/companyAdapter");
+const companyuseCase_1 = require("../../../usecase/usecase/companyuseCase");
+const companyModel_1 = __importDefault(require("../../database/model/companyModel"));
+const companyRepository_1 = require("../../database/repository/companyRepository");
+const nodemailer_1 = __importDefault(require("../../services/nodemailer"));
+const bcrypt_1 = __importDefault(require("../../services/bcrypt"));
+const jwt_1 = __importDefault(require("../../services/jwt"));
+const redis_1 = __importDefault(require("../../services/redis"));
+const s3services_1 = require("../../services/s3services");
+const awsS3_1 = require("../../config/awsS3");
+const cloudinary_1 = __importDefault(require("../../services/cloudinary"));
+const companyRepository = new companyRepository_1.CompanyRepository(companyModel_1.default);
+const bcrypt = new bcrypt_1.default();
+const nodemailer = new nodemailer_1.default();
+const jwt = new jwt_1.default();
+const redis = new redis_1.default();
+const s3service = new s3services_1.S3services();
+const cloudinary = new cloudinary_1.default();
+const companyusecase = new companyuseCase_1.CompanyUseCase(companyRepository, bcrypt, jwt, nodemailer, redis, s3service, awsS3_1.s3, cloudinary);
+const companyAdapter = new companyAdapter_1.CompanyAdapter(companyusecase);
+exports.companyAdapter = companyAdapter;

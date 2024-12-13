@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.eventAdapter = void 0;
+const eventAdapter_1 = require("../../../controller/eventAdapter");
+const eventModel_1 = __importDefault(require("../../database/model/eventModel"));
+const eventuseCase_1 = require("../../../usecase/usecase/eventuseCase");
+const s3services_1 = require("../../services/s3services");
+const eventRepository_1 = require("../../database/repository/eventRepository");
+const nodemailer_1 = __importDefault(require("../../services/nodemailer"));
+const cloudinary_1 = __importDefault(require("../../services/cloudinary"));
+const awsS3_1 = require("../../config/awsS3");
+const redis_1 = __importDefault(require("../../services/redis"));
+const eventRepository = new eventRepository_1.EventRepository(eventModel_1.default);
+const redis = new redis_1.default();
+const s3service = new s3services_1.S3services();
+const nodemailer = new nodemailer_1.default();
+const cloudinary = new cloudinary_1.default();
+const eventusecase = new eventuseCase_1.EventUseCaase(eventRepository, redis, s3service, awsS3_1.s3, nodemailer, cloudinary);
+const eventAdapter = new eventAdapter_1.EventAdapter(eventusecase);
+exports.eventAdapter = eventAdapter;

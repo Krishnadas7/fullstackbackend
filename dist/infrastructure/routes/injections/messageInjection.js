@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.messageAdapter = void 0;
+const messageAdapter_1 = require("../../../controller/messageAdapter");
+const messageModel_1 = __importDefault(require("../../database/model/messageModel"));
+const messageuseCase_1 = require("../../../usecase/usecase/messageuseCase");
+const messageRepository_1 = require("../../database/repository/messageRepository");
+const unreadModel_1 = __importDefault(require("../../database/model/unreadModel"));
+const unreadRepository_1 = require("../../database/repository/unreadRepository");
+const conversatoinModel_1 = __importDefault(require("../../database/model/conversatoinModel"));
+const conversationRepository_1 = require("../../database/repository/conversationRepository");
+const messageRepository = new messageRepository_1.MessageRepository(messageModel_1.default);
+const unreadRepository = new unreadRepository_1.UnreadRepository(unreadModel_1.default);
+const conversationRepository = new conversationRepository_1.ConversationRepository(conversatoinModel_1.default);
+const messageusecase = new messageuseCase_1.MessageUseCase(messageRepository, unreadRepository);
+const messageAdapter = new messageAdapter_1.MessageAdapter(messageusecase);
+exports.messageAdapter = messageAdapter;
