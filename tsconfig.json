@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "ES6",
     "module": "commonjs",
-    "outDir": "./dist",
+    "outDir": "./dist",  // Ensure this is pointing to ./dist
+    "rootDir": "./src",  // Ensure this is pointing to ./src
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true
