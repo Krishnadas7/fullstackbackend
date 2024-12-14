@@ -16,13 +16,13 @@ export class AdminAdapter{
              res.cookie('adminAccessToken',user.adminAccessToken,{
                 httpOnly:true,
                 secure:true,
-                sameSite: "strict",
+                sameSite: "none",
                 maxAge:  900000
             })
             .cookie('adminRefreshToken',user.adminRefreshToken,{
                 httpOnly: true,
                 secure:true,
-                sameSite: "strict",
+                sameSite: "none",
                 maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days for refreshToken
             })
             res.status(user.status).json({
@@ -158,13 +158,13 @@ export class AdminAdapter{
             .cookie("adminAccessToken",accessToken,{
                 httpOnly:true,
                 secure:true,
-                sameSite:'strict',
+                sameSite:'none',
                 maxAge: 900000 
             })
             .cookie("adminRefreshToken",refreshToken,{
                 httpOnly:true,
                 secure:true,
-                sameSite:'strict',
+                sameSite:'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000
             })
             .json({accessToken,refreshToken });

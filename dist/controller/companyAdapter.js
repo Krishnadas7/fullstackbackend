@@ -39,13 +39,13 @@ class CompanyAdapter {
                     res.cookie("companyAccessToken", company.data.companyAccessToken, {
                         httpOnly: true,
                         secure: true,
-                        sameSite: "strict",
+                        sameSite: "none",
                         maxAge: 900000
                     });
                     res.cookie("companyRefreshToken", company.data.companyRefreshToken, {
                         httpOnly: true,
                         secure: true,
-                        sameSite: "strict",
+                        sameSite: "none",
                         maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days for refreshToken
                     });
                 }
@@ -173,13 +173,13 @@ class CompanyAdapter {
                     .cookie("companyAccessToken", accessToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: 900000
                 })
                     .cookie("companyRefreshToken", refreshToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: 30 * 24 * 60 * 60 * 1000
                 })
                     .json({ accessToken, refreshToken });

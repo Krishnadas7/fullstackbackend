@@ -34,13 +34,13 @@ export class UserAdapter {
         res.cookie("userAccessToken", user.userAccessToken, {
           httpOnly:true,
           secure:true,
-          sameSite: "strict",
+          sameSite: "none",
           maxAge:  900000
       });
           res.cookie("userRefreshToken", user.userRefreshToken, {
               httpOnly: true,
               secure:true,
-              sameSite: "strict",
+              sameSite: "none",
               maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days for refreshToken
           });
       }
@@ -66,7 +66,7 @@ async googleAuth (req:Req,res:Res,next:Next){
       res.cookie("userAccessToken", user.userAccessToken, {
         httpOnly:true,
         secure:true,
-        sameSite: "strict",
+        sameSite: "none",
         maxAge:  900000
     });
         res.cookie("userRefreshToken", user.userRefreshToken, {
