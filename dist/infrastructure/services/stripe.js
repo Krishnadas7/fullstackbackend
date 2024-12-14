@@ -38,8 +38,8 @@ class StripeService {
                         },
                     ],
                     mode: 'payment',
-                    success_url: 'https://event-hive-front-end.vercel.app/user/success-page',
-                    cancel_url: 'https://event-hive-front-end.vercel.app/user/checkout-failed',
+                    success_url: 'https://event-hive-kohl.vercel.app/user/success-page',
+                    cancel_url: 'https://event-hive-kohl.vercel.app/user/checkout-failed',
                     metadata: {
                         bookingId,
                         amount,
