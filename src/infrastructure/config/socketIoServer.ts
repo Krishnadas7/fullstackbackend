@@ -32,7 +32,7 @@ const initSocketServer = (server: Server): void => {
     const io = new SocketServer(server, {
         
         cors: {
-            origin: "http://localhost:5173",
+            origin: "https://event-hive-kohl.vercel.app",
             methods: ["GET", "POST"],
             credentials: true
         }

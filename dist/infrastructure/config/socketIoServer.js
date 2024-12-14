@@ -21,7 +21,7 @@ fa();
 const initSocketServer = (server) => {
     const io = new socket_io_1.Server(server, {
         cors: {
-            origin: "http://localhost:5173",
+            origin: "https://event-hive-kohl.vercel.app",
             methods: ["GET", "POST"],
             credentials: true
         }
