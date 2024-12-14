@@ -43,7 +43,7 @@ export const createCompany = async (
        throw ErrorResponse.badRequest('invalid otp')
     }
      const res = await nodemailer.verifyEmail(otp,company_email)
-      
+      const hashedPassword =await bcrypt.createHash(password)
        const company={
         company_name:company_name,
         company_email:company_email,
@@ -51,7 +51,7 @@ export const createCompany = async (
         company_address:company_address,
         industry_type:industry_type,
         company_description:company_description,
-        password:password
+        password:hashedPassword
        }
        const newCompany = await companyRepository.createCompany(company)
        return {
