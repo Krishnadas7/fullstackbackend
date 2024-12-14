@@ -29,20 +29,25 @@ export const createCompany = async (
     //  if(otp !=datas.otp){
     //       throw ErrorResponse.badRequest('invalid otp')
     //  }
-    try {
-      console.log(otp,' ddsdsds',company_name);
+    // try {
+    //   console.log(otp,' ddsdsds',company_name);
       
-      const res = await nodemailer.verifyEmail(otp,company_email)
-      console.log('res from rverigy',res);
-        if(!res){
-          throw ErrorResponse.badRequest('invalid otp')
-        }
+    //   const res = await nodemailer.verifyEmail(otp,company_email)
+    //   console.log('res from rverigy',res);
+    //     if(!res){
+    //       throw ErrorResponse.badRequest('invalid otp')
+    //     }
         
         
-    } catch (error) {
-       throw ErrorResponse.badRequest('invalid otp')
-    }
+    // } catch (error) {
+    //    throw ErrorResponse.badRequest('invalid otp')
+    // }
+    console.log('email verified======');
      const res = await nodemailer.verifyEmail(otp,company_email)
+     
+     if(!res){
+            throw ErrorResponse.badRequest('invalid otp')
+          }
       const hashedPassword = await bcrypt.createHash(password)
       console.log('hasheddd============',hashedPassword);
       

@@ -6,6 +6,8 @@ import { upload } from '../Middleware/multer'
 const router = express.Router()
 
 router.post('/signup',(req:Request,res:Response,next:NextFunction)=>{
+  console.log('rotueeeee');
+  
     companyAdapter.createCompany(req,res,next)
 })
 router.post('/login',(req:Request,res:Response,next:NextFunction)=>{

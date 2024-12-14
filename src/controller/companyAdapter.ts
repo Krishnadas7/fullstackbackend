@@ -9,8 +9,11 @@ export class CompanyAdapter{
     }
 
     async createCompany(req: Req,res: Res,next : Next){
+        console.log('========= this is req body',req.body);
+        
         try {
             const newCompany = await this.companyusecase.createCompany(req.body)
+           console.log('successsss');
            
             if(newCompany){
                res.status(newCompany.status).json({

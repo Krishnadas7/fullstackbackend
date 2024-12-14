@@ -22,18 +22,23 @@ const createCompany = (companyRepository, bcrypt, redis, nodemailer, company_nam
         //  if(otp !=datas.otp){
         //       throw ErrorResponse.badRequest('invalid otp')
         //  }
-        try {
-            console.log(otp, ' ddsdsds', company_name);
-            const res = yield nodemailer.verifyEmail(otp, company_email);
-            console.log('res from rverigy', res);
-            if (!res) {
-                throw errorResponse_1.default.badRequest('invalid otp');
-            }
-        }
-        catch (error) {
+        // try {
+        //   console.log(otp,' ddsdsds',company_name);
+        //   const res = await nodemailer.verifyEmail(otp,company_email)
+        //   console.log('res from rverigy',res);
+        //     if(!res){
+        //       throw ErrorResponse.badRequest('invalid otp')
+        //     }
+        // } catch (error) {
+        //    throw ErrorResponse.badRequest('invalid otp')
+        // }
+        console.log('email verified======');
+        const res = yield nodemailer.verifyEmail(otp, company_email);
+        if (!res) {
             throw errorResponse_1.default.badRequest('invalid otp');
         }
-        const res = yield nodemailer.verifyEmail(otp, company_email);
+        const hashedPassword = yield bcrypt.createHash(password);
+        console.log('hasheddd============', hashedPassword);
         const company = {
             company_name: company_name,
             company_email: company_email,
@@ -41,7 +46,7 @@ const createCompany = (companyRepository, bcrypt, redis, nodemailer, company_nam
             company_address: company_address,
             industry_type: industry_type,
             company_description: company_description,
-            password: password
+            password: hashedPassword
         };
         const newCompany = yield companyRepository.createCompany(company);
         return {

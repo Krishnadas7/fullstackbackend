@@ -16,8 +16,10 @@ class CompanyAdapter {
     }
     createCompany(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('========= this is req body', req.body);
             try {
                 const newCompany = yield this.companyusecase.createCompany(req.body);
+                console.log('successsss');
                 if (newCompany) {
                     res.status(newCompany.status).json({
                         success: newCompany.success,

@@ -19,6 +19,7 @@ const authMiddleware_1 = __importDefault(require("../Middleware/authMiddleware")
 const multer_1 = require("../Middleware/multer");
 const router = express_1.default.Router();
 router.post('/signup', (req, res, next) => {
+    console.log('rotueeeee');
     companyInjection_1.companyAdapter.createCompany(req, res, next);
 });
 router.post('/login', (req, res, next) => {
