@@ -18,8 +18,8 @@ export const companyLogin = async (
             if(company && company.is_block){
                 throw ErrorResponse.badRequest('your currently blocked')
             }
-            const match:boolean = await bcrypt.compare(password,company.password as string)
-            if(match){
+            // const match:boolean = await bcrypt.compare(password,company.password as string)
+            if(password == company.password){
                 const {accessToken,refreshToken} = await jwt.createJWT(company._id as string,company.company_email as string,"company",company.company_name as string)
                 const responseData : CompanyData={
                     _id:company._id,
