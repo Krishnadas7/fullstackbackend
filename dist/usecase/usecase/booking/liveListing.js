@@ -18,13 +18,13 @@ const statusCodes_1 = require("../../../utils/statusCodes");
 const liveListing = (bookingRepository, s3service, s3, userId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const live = yield bookingRepository.liveListing(userId);
-        const urlPromise = live === null || live === void 0 ? void 0 : live.map((details) => __awaiter(void 0, void 0, void 0, function* () {
-            if (details && details.eventDetails) {
-                const url = yield s3service.getImages(s3, details.eventDetails.event_poster);
-                details.eventDetails.event_poster = url;
-            }
-        }));
-        yield Promise.all(urlPromise);
+        // const urlPromise = live?.map(async(details)=>{
+        //     if(details && details.eventDetails){
+        //         const url = await s3service.getImages(s3,details.eventDetails.event_poster as string)
+        //         details.eventDetails.event_poster = url
+        //     }
+        // })
+        // await Promise.all(urlPromise)
         if (live) {
             return {
                 status: statusCodes_1.StatusCodes.OK,

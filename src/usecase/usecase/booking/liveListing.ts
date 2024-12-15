@@ -14,14 +14,14 @@ export const liveListing = async(
 ) =>{
  try {
         const live = await bookingRepository.liveListing(userId)
-        const urlPromise = live?.map(async(details)=>{
-            if(details && details.eventDetails){
-                const url = await s3service.getImages(s3,details.eventDetails.event_poster as string)
-                details.eventDetails.event_poster = url
-            }
+        // const urlPromise = live?.map(async(details)=>{
+        //     if(details && details.eventDetails){
+        //         const url = await s3service.getImages(s3,details.eventDetails.event_poster as string)
+        //         details.eventDetails.event_poster = url
+        //     }
         
-        })
-        await Promise.all(urlPromise)
+        // })
+        // await Promise.all(urlPromise)
         if(live){
             return {
                 status:StatusCodes.OK,
